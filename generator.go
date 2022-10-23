@@ -1,7 +1,6 @@
 package html
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"regexp"
@@ -23,11 +22,4 @@ func Titulo(urls ...string) <-chan string {
 		}(url)
 	}
 	return c
-}
-
-func main() {
-	t1 := Titulo("https://www.canaldocampo.com.br/", "http://www.asmeduberaba.com.br/home")
-	t2 := Titulo("https://picpay.com/", "https://www.ifood.com.br/")
-	fmt.Println("Primeiros:", <-t1, "|", <-t2)
-	fmt.Println("Segundos:", <-t1, "|", <-t2)
 }
