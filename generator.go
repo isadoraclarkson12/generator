@@ -1,4 +1,4 @@
-package main
+package html
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 
 // <-chan - canal somente-leitura
 
-func titulo(urls ...string) <-chan string {
+func Titulo(urls ...string) <-chan string {
 	c := make(chan string)
 	for _, url := range urls {
 		go func(url string) {
@@ -26,8 +26,8 @@ func titulo(urls ...string) <-chan string {
 }
 
 func main() {
-	t1 := titulo("https://www.canaldocampo.com.br/", "http://www.asmeduberaba.com.br/home")
-	t2 := titulo("https://picpay.com/", "https://www.ifood.com.br/")
+	t1 := Titulo("https://www.canaldocampo.com.br/", "http://www.asmeduberaba.com.br/home")
+	t2 := Titulo("https://picpay.com/", "https://www.ifood.com.br/")
 	fmt.Println("Primeiros:", <-t1, "|", <-t2)
 	fmt.Println("Segundos:", <-t1, "|", <-t2)
 }
